@@ -63,7 +63,8 @@ semai/       vpd.py penang_data.py forecast.py wilt.py rig_client.py logger.py a
 scripts/     train_forecast.py why_vpd.py train_wilt.py eval_rig_frames.py fetch_today.py mock_rig.py soak_test.py
 notebooks/   semai_results.ipynb
 results/     figures (PNG, 200 dpi), metrics JSON, the results pack (RESULTS, EXPLAINER, JUDGE_QA, SLIDES, DEMO_CHECKLIST)
-data/ models/ logs/   gitignored (data downloads, trained models, rig logs)
+models/      the two trained model files (forecast.joblib, wilt.joblib)
+data/ logs/  gitignored (data downloads, rig logs)
 ```
 
 ## Hard rules we kept
