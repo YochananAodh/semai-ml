@@ -1,0 +1,340 @@
+{
+  "computed_at_utc": "2026-09-25T04:39:56Z",
+  "data": {
+    "url": "https://archive-api.open-meteo.com/v1/archive?latitude=5.4482&longitude=100.29&start_date=2023-01-01&end_date=2025-12-31&hourly=temperature_2m,relative_humidity_2m&timezone=Asia%2FKuala_Lumpur",
+    "fetched_at_utc": "2026-09-25T03:49:38Z",
+    "rows": 26304,
+    "source": "Open-Meteo Historical Weather API (ERA5 reanalysis), CC BY 4.0",
+    "csv": "data/penang_hourly_2023_2025.csv",
+    "period_local": [
+      "2023-01-01 00:00:00",
+      "2025-12-31 23:00:00"
+    ],
+    "timezone": "Asia/Kuala_Lumpur",
+    "n_hours": 26304
+  },
+  "thresholds": {
+    "vpd_dry_kpa": 1.2,
+    "vpd_opt_low_kpa": 0.8,
+    "vpd_opt_high_kpa": 1.1,
+    "vpd_sat_kpa": 0.6,
+    "rh_rule_pct": 60.0,
+    "rh_table_pct": [
+      55,
+      60,
+      65,
+      70,
+      75
+    ],
+    "vpd_formula": "air VPD = 0.6108*exp(17.27*T/(T+237.3)) * (1 - RH/100)  [kPa]",
+    "hysteresis": "gaps 0.6-0.8 and 1.1-1.2 kPa keep the previous state (semai.vpd.rig_state_sequence)"
+  },
+  "rig_states_hysteresis": {
+    "overall": {
+      "n_hours": 26304,
+      "DRY": {
+        "hours": 4069,
+        "share_pct": 15.469
+      },
+      "OPTIMAL": {
+        "hours": 4809,
+        "share_pct": 18.282
+      },
+      "SATURATED": {
+        "hours": 17426,
+        "share_pct": 66.248
+      }
+    },
+    "2023": {
+      "n_hours": 8760,
+      "DRY": {
+        "hours": 688,
+        "share_pct": 7.854
+      },
+      "OPTIMAL": {
+        "hours": 1710,
+        "share_pct": 19.521
+      },
+      "SATURATED": {
+        "hours": 6362,
+        "share_pct": 72.626
+      }
+    },
+    "2024": {
+      "n_hours": 8784,
+      "DRY": {
+        "hours": 1347,
+        "share_pct": 15.335
+      },
+      "OPTIMAL": {
+        "hours": 1503,
+        "share_pct": 17.111
+      },
+      "SATURATED": {
+        "hours": 5934,
+        "share_pct": 67.555
+      }
+    },
+    "2025": {
+      "n_hours": 8760,
+      "DRY": {
+        "hours": 2034,
+        "share_pct": 23.219
+      },
+      "OPTIMAL": {
+        "hours": 1596,
+        "share_pct": 18.219
+      },
+      "SATURATED": {
+        "hours": 5130,
+        "share_pct": 58.562
+      }
+    }
+  },
+  "vpd_bands_no_hysteresis": {
+    "overall": {
+      "n_hours": 26304,
+      "dry_gt_1.2": {
+        "hours": 3604,
+        "share_pct": 13.701
+      },
+      "gap_1.1_to_1.2": {
+        "hours": 726,
+        "share_pct": 2.76
+      },
+      "optimal_0.8_to_1.1": {
+        "hours": 3064,
+        "share_pct": 11.648
+      },
+      "gap_0.6_to_0.8": {
+        "hours": 3142,
+        "share_pct": 11.945
+      },
+      "saturated_lt_0.6": {
+        "hours": 15768,
+        "share_pct": 59.945
+      }
+    },
+    "2023": {
+      "n_hours": 8760,
+      "dry_gt_1.2": {
+        "hours": 567,
+        "share_pct": 6.473
+      },
+      "gap_1.1_to_1.2": {
+        "hours": 252,
+        "share_pct": 2.877
+      },
+      "optimal_0.8_to_1.1": {
+        "hours": 1096,
+        "share_pct": 12.511
+      },
+      "gap_0.6_to_0.8": {
+        "hours": 1161,
+        "share_pct": 13.253
+      },
+      "saturated_lt_0.6": {
+        "hours": 5684,
+        "share_pct": 64.886
+      }
+    },
+    "2024": {
+      "n_hours": 8784,
+      "dry_gt_1.2": {
+        "hours": 1221,
+        "share_pct": 13.9
+      },
+      "gap_1.1_to_1.2": {
+        "hours": 218,
+        "share_pct": 2.482
+      },
+      "optimal_0.8_to_1.1": {
+        "hours": 960,
+        "share_pct": 10.929
+      },
+      "gap_0.6_to_0.8": {
+        "hours": 971,
+        "share_pct": 11.054
+      },
+      "saturated_lt_0.6": {
+        "hours": 5414,
+        "share_pct": 61.635
+      }
+    },
+    "2025": {
+      "n_hours": 8760,
+      "dry_gt_1.2": {
+        "hours": 1816,
+        "share_pct": 20.731
+      },
+      "gap_1.1_to_1.2": {
+        "hours": 256,
+        "share_pct": 2.922
+      },
+      "optimal_0.8_to_1.1": {
+        "hours": 1008,
+        "share_pct": 11.507
+      },
+      "gap_0.6_to_0.8": {
+        "hours": 1010,
+        "share_pct": 11.53
+      },
+      "saturated_lt_0.6": {
+        "hours": 4670,
+        "share_pct": 53.311
+      }
+    }
+  },
+  "rh_rule_vs_vpd_rule": {
+    "rh_threshold_pct": 60.0,
+    "n_hours": 26304,
+    "n_dry_stress": 3604,
+    "n_rh_rule": 1176,
+    "n_both": 1176,
+    "n_missed": 2428,
+    "missed_share_of_dry_pct": 67.37,
+    "n_false_alarm": 0,
+    "typical_missed_hour": {
+      "t_c": {
+        "p25": 29.5,
+        "median": 30.1,
+        "p75": 30.7
+      },
+      "rh_pct": {
+        "p25": 64.0,
+        "median": 66.0,
+        "p75": 69.0
+      },
+      "vpd_kpa": {
+        "p25": 1.304,
+        "median": 1.414,
+        "p75": 1.575
+      }
+    }
+  },
+  "rh_threshold_table": [
+    {
+      "rh_threshold_pct": 55.0,
+      "n_hours": 26304,
+      "n_dry_stress": 3604,
+      "n_rh_rule": 618,
+      "n_both": 618,
+      "n_missed": 2986,
+      "missed_share_of_dry_pct": 82.852,
+      "n_false_alarm": 0
+    },
+    {
+      "rh_threshold_pct": 60.0,
+      "n_hours": 26304,
+      "n_dry_stress": 3604,
+      "n_rh_rule": 1176,
+      "n_both": 1176,
+      "n_missed": 2428,
+      "missed_share_of_dry_pct": 67.37,
+      "n_false_alarm": 0
+    },
+    {
+      "rh_threshold_pct": 65.0,
+      "n_hours": 26304,
+      "n_dry_stress": 3604,
+      "n_rh_rule": 1979,
+      "n_both": 1978,
+      "n_missed": 1626,
+      "missed_share_of_dry_pct": 45.117,
+      "n_false_alarm": 1
+    },
+    {
+      "rh_threshold_pct": 70.0,
+      "n_hours": 26304,
+      "n_dry_stress": 3604,
+      "n_rh_rule": 3300,
+      "n_both": 3213,
+      "n_missed": 391,
+      "missed_share_of_dry_pct": 10.849,
+      "n_false_alarm": 87
+    },
+    {
+      "rh_threshold_pct": 75.0,
+      "n_hours": 26304,
+      "n_dry_stress": 3604,
+      "n_rh_rule": 5146,
+      "n_both": 3604,
+      "n_missed": 0,
+      "missed_share_of_dry_pct": 0.0,
+      "n_false_alarm": 1542
+    }
+  ],
+  "dry_by_hour_of_day": {
+    "dry_share_pct_by_hour": [
+      0.821,
+      0.547,
+      0.182,
+      0.091,
+      0.0,
+      0.0,
+      0.0,
+      0.091,
+      0.182,
+      1.095,
+      8.212,
+      22.81,
+      37.318,
+      45.803,
+      50.182,
+      46.807,
+      41.15,
+      32.482,
+      21.989,
+      10.401,
+      3.193,
+      2.646,
+      1.734,
+      1.095
+    ],
+    "mean_vpd_kpa_by_hour": [
+      0.3514,
+      0.3191,
+      0.2906,
+      0.2678,
+      0.2401,
+      0.2227,
+      0.21,
+      0.1993,
+      0.2762,
+      0.4242,
+      0.6255,
+      0.8763,
+      1.1014,
+      1.2421,
+      1.2957,
+      1.2577,
+      1.1596,
+      1.0417,
+      0.8931,
+      0.6829,
+      0.5244,
+      0.482,
+      0.4244,
+      0.3847
+    ],
+    "peak_hour": 14,
+    "peak_dry_share_pct": 50.182,
+    "hours_per_slot": 1096
+  },
+  "figures": {
+    "W1_rig_states_penang.png": "share of hours per rig state (hysteresis replica), overall and per year",
+    "W2_rh_rule_misses.png": {
+      "description": "T vs RH scatter, 3 classes, RH=60 line and VPD=1.2 curve",
+      "sample_size": 4000,
+      "seed": 0,
+      "sample_class_counts": {
+        "not dry-stress (VPD <= 1.2 kPa)": 3467,
+        "dry-stress caught by RH < 60 % rule": 193,
+        "dry-stress MISSED by RH < 60 % rule": 340
+      }
+    },
+    "W3_dry_by_hour.png": "dry share by hour of day (top) and mean VPD by hour with the 1.2 kPa line (bottom)"
+  },
+  "seed": 0,
+  "script": "scripts/why_vpd.py"
+}

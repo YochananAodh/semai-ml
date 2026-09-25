@@ -1,0 +1,994 @@
+{
+  "data": {
+    "url": "https://archive-api.open-meteo.com/v1/archive?latitude=5.4482&longitude=100.29&start_date=2023-01-01&end_date=2025-12-31&hourly=temperature_2m,relative_humidity_2m&timezone=Asia%2FKuala_Lumpur",
+    "fetched_at_utc": "2026-09-25T03:49:38Z",
+    "rows": 26304,
+    "source": "Open-Meteo Historical Weather API (ERA5 reanalysis), CC BY 4.0"
+  },
+  "label_definition": "label(t) = 1 if air VPD > 1.2 kPa at t+1 or t+2 (misting needed within the next 2 h); NaN where t+1 or t+2 falls off the end of the series",
+  "split_definition": "time split: train = rows with year <= 2024 whose label window (t+1, t+2) stays inside 2024; test = every row with year == 2025",
+  "features": [
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos",
+    "t",
+    "rh",
+    "vpd",
+    "t_lag1",
+    "t_lag2",
+    "t_lag3",
+    "rh_lag1",
+    "rh_lag2",
+    "rh_lag3",
+    "vpd_lag1",
+    "vpd_lag2",
+    "vpd_lag3",
+    "dvpd"
+  ],
+  "n_rows_total": 26304,
+  "n_rows_dropped_nan": 5,
+  "n_train": 17539,
+  "n_test": 8758,
+  "n_train_dropped_for_leakage": 2,
+  "train_range": [
+    "2023-01-01 03:00:00",
+    "2024-12-31 21:00:00"
+  ],
+  "test_range": [
+    "2025-01-01 00:00:00",
+    "2025-12-31 21:00:00"
+  ],
+  "train_positive_rate": 0.12372427162323964,
+  "test_positive_rate": 0.24309203014386846,
+  "model": "sklearn.ensemble.HistGradientBoostingClassifier",
+  "model_params": {
+    "max_iter": 300,
+    "learning_rate": 0.05,
+    "random_state": 0
+  },
+  "model_iterations_used": 110,
+  "threshold": 0.5,
+  "metrics": {
+    "model": {
+      "accuracy": 0.9379995432747202,
+      "f1": 0.8649589654314846,
+      "precision": 0.9191331923890064,
+      "recall": 0.8168154062940347,
+      "auc": 0.9811874620964958,
+      "auc_kind": "probability",
+      "confusion": {
+        "tn": 6476,
+        "fp": 153,
+        "fn": 390,
+        "tp": 1739
+      },
+      "n": 8758,
+      "n_predicted_positive": 1892
+    },
+    "always_no": {
+      "accuracy": 0.7569079698561315,
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "auc": null,
+      "auc_kind": null,
+      "confusion": {
+        "tn": 6629,
+        "fp": 0,
+        "fn": 2129,
+        "tp": 0
+      },
+      "n": 8758,
+      "n_predicted_positive": 0
+    },
+    "persistence": {
+      "accuracy": 0.8973509933774835,
+      "f1": 0.7721166032953105,
+      "precision": 0.8386563876651982,
+      "recall": 0.7153593236261155,
+      "auc": 0.8355797975801418,
+      "auc_kind": "binary",
+      "confusion": {
+        "tn": 6336,
+        "fp": 293,
+        "fn": 606,
+        "tp": 1523
+      },
+      "n": 8758,
+      "n_predicted_positive": 1816
+    },
+    "climatology": {
+      "accuracy": 0.8408312400091345,
+      "f1": 0.7023911187019641,
+      "precision": 0.6438356164383562,
+      "recall": 0.7726632221700329,
+      "auc": 0.9069123591977151,
+      "auc_kind": "hourly rate",
+      "confusion": {
+        "tn": 5719,
+        "fp": 910,
+        "fn": 484,
+        "tp": 1645
+      },
+      "n": 8758,
+      "n_predicted_positive": 2555,
+      "threshold": 0.2503419972640219,
+      "threshold_train_f1": 0.49375600384245916,
+      "threshold_selection": "grid over the 24 distinct training hourly rates; the smallest rate with the highest training F1 wins",
+      "hourly_rates": {
+        "0": 0.00684931506849315,
+        "1": 0.0027397260273972603,
+        "2": 0.0013698630136986301,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0013679890560875513,
+        "7": 0.009575923392612859,
+        "8": 0.04514363885088919,
+        "9": 0.12859097127222982,
+        "10": 0.265389876880985,
+        "11": 0.3707250341997264,
+        "12": 0.42818057455540354,
+        "13": 0.4240766073871409,
+        "14": 0.38850889192886456,
+        "15": 0.3337893296853625,
+        "16": 0.2503419972640219,
+        "17": 0.1491108071135431,
+        "18": 0.06839945280437756,
+        "19": 0.027359781121751026,
+        "20": 0.02188782489740082,
+        "21": 0.016415868673050615,
+        "22": 0.0136986301369863,
+        "23": 0.015068493150684932
+      },
+      "hours_predicted_positive": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  },
+  "permutation_importance": [
+    {
+      "feature": "vpd",
+      "mean": 0.46418241975773594,
+      "std": 0.010251247050569262
+    },
+    {
+      "feature": "hour_cos",
+      "mean": 0.1022699127314916,
+      "std": 0.0034881778757028586
+    },
+    {
+      "feature": "dvpd",
+      "mean": 0.04326376197792241,
+      "std": 0.003513315278512817
+    },
+    {
+      "feature": "rh",
+      "mean": 0.03236563982153923,
+      "std": 0.0038002329578253977
+    },
+    {
+      "feature": "hour_sin",
+      "mean": 0.021161683264733187,
+      "std": 0.0021334912460155417
+    },
+    {
+      "feature": "doy_sin",
+      "mean": 0.0037087623213614028,
+      "std": 0.002331513240287823
+    },
+    {
+      "feature": "t",
+      "mean": 0.003541855319958509,
+      "std": 0.0020624222362618586
+    },
+    {
+      "feature": "doy_cos",
+      "mean": 0.0028749803013753627,
+      "std": 0.0022809914076914566
+    },
+    {
+      "feature": "vpd_lag1",
+      "mean": 0.0006975471708191239,
+      "std": 0.0007402202857917791
+    },
+    {
+      "feature": "vpd_lag2",
+      "mean": -7.74089753131424e-05,
+      "std": 0.0009310217614625504
+    },
+    {
+      "feature": "t_lag1",
+      "mean": -0.0003670306685998326,
+      "std": 0.0016370944675025436
+    },
+    {
+      "feature": "rh_lag2",
+      "mean": -0.0004555808678811224,
+      "std": 0.0011451892739500296
+    },
+    {
+      "feature": "rh_lag1",
+      "mean": -0.0005806468197704029,
+      "std": 0.0007570796986364509
+    },
+    {
+      "feature": "t_lag3",
+      "mean": -0.0006877743925531643,
+      "std": 0.0019302034109409502
+    },
+    {
+      "feature": "t_lag2",
+      "mean": -0.0007302518437271921,
+      "std": 0.00040828300501633745
+    },
+    {
+      "feature": "rh_lag3",
+      "mean": -0.001816484075369773,
+      "std": 0.001006237922080701
+    },
+    {
+      "feature": "vpd_lag3",
+      "mean": -0.0035392189446188716,
+      "std": 0.0007570606992090649
+    }
+  ],
+  "permutation_importance_params": {
+    "n_repeats": 10,
+    "random_state": 0,
+    "scoring": "f1",
+    "n_jobs": 4,
+    "seconds": 2.1852614999988873
+  },
+  "replay_days": [
+    {
+      "date": "2025-02-07",
+      "category": "driest day (highest daily max VPD)",
+      "daily_max_vpd": 3.724524997892986,
+      "hours": [
+        {
+          "hour": 0,
+          "t": 26.7,
+          "rh": 63.0,
+          "vpd": 1.2961353393887092,
+          "prob": 0.030723231047715353,
+          "actual_dry": false,
+          "dry_now": true
+        },
+        {
+          "hour": 1,
+          "t": 26.1,
+          "rh": 69.0,
+          "vpd": 1.0482221616722909,
+          "prob": 0.006941030596649719,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 2,
+          "t": 25.8,
+          "rh": 69.0,
+          "vpd": 1.0297897837879846,
+          "prob": 0.013847032715971467,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 3,
+          "t": 25.4,
+          "rh": 70.0,
+          "vpd": 0.9732126714476032,
+          "prob": 0.009302964005882914,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 4,
+          "t": 25.0,
+          "rh": 71.0,
+          "vpd": 0.918655538076986,
+          "prob": 0.007690356022947758,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 5,
+          "t": 24.3,
+          "rh": 73.0,
+          "vpd": 0.8202793631098171,
+          "prob": 0.010364829623243666,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 6,
+          "t": 23.7,
+          "rh": 75.0,
+          "vpd": 0.7326518436716484,
+          "prob": 0.008462206656096337,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 7,
+          "t": 23.2,
+          "rh": 77.0,
+          "vpd": 0.6540286676733569,
+          "prob": 0.08419159316467535,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 8,
+          "t": 23.2,
+          "rh": 78.0,
+          "vpd": 0.6255926386440804,
+          "prob": 0.3530265604890988,
+          "actual_dry": true,
+          "dry_now": false
+        },
+        {
+          "hour": 9,
+          "t": 25.0,
+          "rh": 69.0,
+          "vpd": 0.9820110924271228,
+          "prob": 0.9541960390711478,
+          "actual_dry": true,
+          "dry_now": false
+        },
+        {
+          "hour": 10,
+          "t": 26.5,
+          "rh": 59.0,
+          "vpd": 1.4194537671071084,
+          "prob": 0.9859941622924319,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 11,
+          "t": 28.3,
+          "rh": 52.0,
+          "vpd": 1.846301458746503,
+          "prob": 0.9914666573902744,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 12,
+          "t": 30.9,
+          "rh": 41.0,
+          "vpd": 2.6355764119185183,
+          "prob": 0.9897898499518583,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 13,
+          "t": 32.8,
+          "rh": 32.0,
+          "vpd": 3.3823145554810274,
+          "prob": 0.9951182410885298,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 14,
+          "t": 33.5,
+          "rh": 28.0,
+          "vpd": 3.724524997892986,
+          "prob": 0.99682349068693,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 15,
+          "t": 32.6,
+          "rh": 39.0,
+          "vpd": 3.00021257602752,
+          "prob": 0.9960918075388496,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 16,
+          "t": 31.8,
+          "rh": 51.0,
+          "vpd": 2.303637461364441,
+          "prob": 0.9960740313616214,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 17,
+          "t": 31.5,
+          "rh": 50.0,
+          "vpd": 2.3110344515127523,
+          "prob": 0.9897079601365195,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 18,
+          "t": 30.2,
+          "rh": 50.0,
+          "vpd": 2.145991521241869,
+          "prob": 0.9297636352557088,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 19,
+          "t": 28.6,
+          "rh": 60.0,
+          "vpd": 1.5656037194719374,
+          "prob": 0.17283091387839986,
+          "actual_dry": false,
+          "dry_now": true
+        },
+        {
+          "hour": 20,
+          "t": 27.5,
+          "rh": 70.0,
+          "vpd": 1.1013810627875107,
+          "prob": 0.017486962247635573,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 21,
+          "t": 27.8,
+          "rh": 71.0,
+          "vpd": 1.08347913281959,
+          "prob": 0.0183229957174604,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 22,
+          "t": 27.7,
+          "rh": 72.0,
+          "vpd": 1.040032946662176,
+          "prob": 0.01777620733283377,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 23,
+          "t": 27.3,
+          "rh": 70.0,
+          "vpd": 1.0885721537981594,
+          "prob": 0.01856999916616292,
+          "actual_dry": false,
+          "dry_now": false
+        }
+      ]
+    },
+    {
+      "date": "2025-11-24",
+      "category": "wettest day (lowest daily max VPD)",
+      "daily_max_vpd": 0.4369871777183333,
+      "hours": [
+        {
+          "hour": 0,
+          "t": 23.7,
+          "rh": 99.0,
+          "vpd": 0.0293060737468659,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 1,
+          "t": 23.6,
+          "rh": 99.0,
+          "vpd": 0.0291302300034001,
+          "prob": 0.0006863818194401952,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 2,
+          "t": 24.3,
+          "rh": 94.0,
+          "vpd": 0.1822843029132928,
+          "prob": 0.0013198671174500442,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 3,
+          "t": 24.5,
+          "rh": 94.0,
+          "vpd": 0.1844789430528955,
+          "prob": 0.0008420680196700819,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 4,
+          "t": 24.3,
+          "rh": 94.0,
+          "vpd": 0.1822843029132928,
+          "prob": 0.0009888361174711163,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 5,
+          "t": 24.2,
+          "rh": 96.0,
+          "vpd": 0.1207970327302398,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 6,
+          "t": 24.0,
+          "rh": 96.0,
+          "vpd": 0.1193566990866224,
+          "prob": 0.000680073694982346,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 7,
+          "t": 24.0,
+          "rh": 96.0,
+          "vpd": 0.1193566990866224,
+          "prob": 0.0007111860056934563,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 8,
+          "t": 24.4,
+          "rh": 95.0,
+          "vpd": 0.1528156326508382,
+          "prob": 0.00266680175809578,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 9,
+          "t": 24.9,
+          "rh": 94.0,
+          "vpd": 0.1889374607544264,
+          "prob": 0.0029309327861204476,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 10,
+          "t": 25.3,
+          "rh": 90.0,
+          "vpd": 0.3224827590711109,
+          "prob": 0.004630470996038791,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 11,
+          "t": 25.7,
+          "rh": 87.0,
+          "vpd": 0.4292972224567378,
+          "prob": 0.009971746544019982,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 12,
+          "t": 26.0,
+          "rh": 87.0,
+          "vpd": 0.4369871777183333,
+          "prob": 0.004524394697247291,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 13,
+          "t": 26.0,
+          "rh": 87.0,
+          "vpd": 0.4369871777183333,
+          "prob": 0.004281681720262469,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 14,
+          "t": 26.0,
+          "rh": 87.0,
+          "vpd": 0.4369871777183333,
+          "prob": 0.0037534176754124692,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 15,
+          "t": 25.8,
+          "rh": 88.0,
+          "vpd": 0.3986283034018004,
+          "prob": 0.0036357473986868877,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 16,
+          "t": 25.8,
+          "rh": 90.0,
+          "vpd": 0.3321902528348336,
+          "prob": 0.003691400854171938,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 17,
+          "t": 25.5,
+          "rh": 93.0,
+          "vpd": 0.2284349633527138,
+          "prob": 0.000945505165878665,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 18,
+          "t": 25.3,
+          "rh": 95.0,
+          "vpd": 0.1612413795355556,
+          "prob": 0.0006439513912062416,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 19,
+          "t": 25.1,
+          "rh": 95.0,
+          "vpd": 0.1593347881102512,
+          "prob": 0.0006439513912062416,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 20,
+          "t": 24.9,
+          "rh": 94.0,
+          "vpd": 0.1889374607544264,
+          "prob": 0.0008785169195211802,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 21,
+          "t": 24.6,
+          "rh": 96.0,
+          "vpd": 0.1237232531809018,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 22,
+          "t": 24.6,
+          "rh": 97.0,
+          "vpd": 0.0927924398856763,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 23,
+          "t": 24.4,
+          "rh": 97.0,
+          "vpd": 0.0916893795905029,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        }
+      ]
+    },
+    {
+      "date": "2025-02-22",
+      "category": "mixed day (daily max VPD closest to the 2025 median)",
+      "daily_max_vpd": 1.6528191057794095,
+      "hours": [
+        {
+          "hour": 0,
+          "t": 25.7,
+          "rh": 91.0,
+          "vpd": 0.2972057693931261,
+          "prob": 0.0007903002794716423,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 1,
+          "t": 25.7,
+          "rh": 89.0,
+          "vpd": 0.3632514959249319,
+          "prob": 0.0009897442581528065,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 2,
+          "t": 25.5,
+          "rh": 89.0,
+          "vpd": 0.3589692281256933,
+          "prob": 0.0009632325183621244,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 3,
+          "t": 25.4,
+          "rh": 90.0,
+          "vpd": 0.3244042238158676,
+          "prob": 0.001234815667902372,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 4,
+          "t": 25.0,
+          "rh": 91.0,
+          "vpd": 0.2850999945756162,
+          "prob": 0.0008449098402560994,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 5,
+          "t": 24.9,
+          "rh": 92.0,
+          "vpd": 0.2519166143392348,
+          "prob": 0.0008449098402560994,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 6,
+          "t": 24.6,
+          "rh": 95.0,
+          "vpd": 0.1546540664761272,
+          "prob": 0.000680073694982346,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 7,
+          "t": 24.5,
+          "rh": 95.0,
+          "vpd": 0.1537324525440796,
+          "prob": 0.0007393244262759907,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 8,
+          "t": 24.9,
+          "rh": 93.0,
+          "vpd": 0.2204270375468304,
+          "prob": 0.006580748810766116,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 9,
+          "t": 25.2,
+          "rh": 91.0,
+          "vpd": 0.2885141018624119,
+          "prob": 0.0037712818111902717,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 10,
+          "t": 26.9,
+          "rh": 81.0,
+          "vpd": 0.6734505674537163,
+          "prob": 0.5709569206498744,
+          "actual_dry": true,
+          "dry_now": false
+        },
+        {
+          "hour": 11,
+          "t": 28.7,
+          "rh": 71.0,
+          "vpd": 1.14165851585542,
+          "prob": 0.957209777821511,
+          "actual_dry": true,
+          "dry_now": false
+        },
+        {
+          "hour": 12,
+          "t": 30.3,
+          "rh": 64.0,
+          "vpd": 1.55398513783342,
+          "prob": 0.9831288241389264,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 13,
+          "t": 30.9,
+          "rh": 63.0,
+          "vpd": 1.6528191057794095,
+          "prob": 0.9594449891684533,
+          "actual_dry": true,
+          "dry_now": true
+        },
+        {
+          "hour": 14,
+          "t": 30.7,
+          "rh": 66.0,
+          "vpd": 1.5015858713309054,
+          "prob": 0.8822348499108033,
+          "actual_dry": false,
+          "dry_now": true
+        },
+        {
+          "hour": 15,
+          "t": 30.1,
+          "rh": 72.0,
+          "vpd": 1.1948896692714115,
+          "prob": 0.155910501959594,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 16,
+          "t": 28.6,
+          "rh": 76.0,
+          "vpd": 0.9393622316831624,
+          "prob": 0.012774365860339369,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 17,
+          "t": 27.0,
+          "rh": 85.0,
+          "vpd": 0.534801026371627,
+          "prob": 0.006104225267585451,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 18,
+          "t": 26.5,
+          "rh": 82.0,
+          "vpd": 0.6231748245836086,
+          "prob": 0.008001247239206354,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 19,
+          "t": 25.3,
+          "rh": 90.0,
+          "vpd": 0.3224827590711109,
+          "prob": 0.0013099495538620484,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 20,
+          "t": 24.6,
+          "rh": 94.0,
+          "vpd": 0.1855848797713527,
+          "prob": 0.0008805538876560184,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 21,
+          "t": 24.6,
+          "rh": 99.0,
+          "vpd": 0.0309308132952254,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 22,
+          "t": 24.3,
+          "rh": 99.0,
+          "vpd": 0.0303807171522154,
+          "prob": 0.0006380713360750455,
+          "actual_dry": false,
+          "dry_now": false
+        },
+        {
+          "hour": 23,
+          "t": 24.1,
+          "rh": 98.0,
+          "vpd": 0.0600374908868632,
+          "prob": 0.003375840557873871,
+          "actual_dry": false,
+          "dry_now": false
+        }
+      ]
+    }
+  ],
+  "replay_daily_max_vpd_median_2025": 1.6528191057794095,
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2"
+  },
+  "seed": 0,
+  "trained_at_utc": "2026-09-25T04:39:52Z",
+  "train_seconds": 0.23305290000098466,
+  "self_checks": [
+    {
+      "check": "hourly series is continuous",
+      "passed": true,
+      "detail": "every step is 1 h"
+    },
+    {
+      "check": "feature names/order",
+      "passed": true,
+      "detail": "hour_sin, hour_cos, doy_sin, doy_cos, t, rh, vpd, t_lag1, t_lag2, t_lag3, rh_lag1, rh_lag2, rh_lag3, vpd_lag1, vpd_lag2, vpd_lag3, dvpd"
+    },
+    {
+      "check": "every test row is in 2025",
+      "passed": true,
+      "detail": "n_test=8758"
+    },
+    {
+      "check": "no train row is in 2025",
+      "passed": true,
+      "detail": "n_train=17539"
+    },
+    {
+      "check": "no train label uses a 2025 hour",
+      "passed": true,
+      "detail": "last train hour 2024-12-31 21:00:00, its label window ends 2024-12-31 23:00:00; 2 train rows dropped"
+    },
+    {
+      "check": "train and test are disjoint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "test set = all 2025 rows with a defined label",
+      "passed": true,
+      "detail": "8758 of 8760 2025 hours; the 2 last hours of 2025-12-31 have no label (t+2 is outside the data)"
+    },
+    {
+      "check": "saved model reloads through semai.forecast",
+      "passed": true,
+      "detail": "C:\\Dev\\semai-ml\\models\\forecast.joblib"
+    },
+    {
+      "check": "reloaded model reproduces probabilities",
+      "passed": true,
+      "detail": "first 50 test rows"
+    },
+    {
+      "check": "F4 picks three distinct 2025 days",
+      "passed": true,
+      "detail": "2025-02-07 (3.72 kPa), 2025-11-24 (0.44 kPa), 2025-02-22 (1.65 kPa)"
+    },
+    {
+      "check": "replay returns 24 rows, each with a probability",
+      "passed": true,
+      "detail": "2025-03-15"
+    },
+    {
+      "check": "replay probabilities match the training-path probabilities",
+      "passed": true,
+      "detail": "2025-03-15, 24 hours"
+    }
+  ]
+}

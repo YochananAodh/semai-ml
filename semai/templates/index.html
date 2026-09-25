@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEMAI Console</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app">
+
+  <header class="hdr">
+    <div class="brand">SEMAI</div>
+    <div class="conn">
+      <span id="dot" class="dot off" title="connection"></span>
+      <span id="rig-url" class="mono">{{ rig_url }}</span>
+      <span id="updated" class="muted">updated — s ago</span>
+    </div>
+    <div id="mock-banner" class="mock-banner hidden">MOCK DATA</div>
+    <div class="hdr-right muted"><span id="server-time"></span></div>
+  </header>
+
+  <section class="panel live">
+    <h2>Live rig readings</h2>
+    <div class="big-label">leaf VPD <span class="unit">kPa</span></div>
+    <div id="vpd" class="big">—</div>
+    <div id="status" class="chip grey">—</div>
+    <div class="grid2">
+      <div class="cell"><div class="lbl">air T</div><div id="t_air" class="val">—</div><div class="unit">°C</div></div>
+      <div class="cell"><div class="lbl">RH</div><div id="rh" class="val">—</div><div class="unit">%</div></div>
+      <div class="cell"><div class="lbl">leaf T</div><div id="t_leaf" class="val">—</div><div class="unit">°C</div></div>
+      <div class="cell"><div class="lbl">light</div><div id="light" class="val">—</div><div class="unit">raw ADC</div></div>
+      <div class="cell wide"><div class="lbl">water <span class="warn">uncalibrated</span></div><div id="water" class="val">—</div><div class="unit">%</div></div>
+    </div>
+    <div class="muted small">null readings show as "—" (sensor invalid), never 0.</div>
+    <div class="muted small">rig thresholds: mist &gt; 1.2 kPa · optimal 0.8–1.1 · purge &lt; 0.6</div>
+  </section>
+
+  <section class="panel camera">
+    <h2>Camera · Wilt Watch <span class="muted small">ROI {{ '%.2f' % roi }}</span></h2>
+    <div class="frame-wrap">
+      <img id="frame" src="/frame.jpg" alt="camera frame" width="800" height="600">
+    </div>
+    <div id="verdict" class="verdict">wilt model unavailable</div>
+    <div class="row">
+      <button id="cap-healthy" class="btn">Capture healthy</button>
+      <button id="cap-wilted" class="btn">Capture wilted</button>
+      <span id="cap-msg" class="muted small"></span>
+    </div>
+  </section>
+
+  <section class="panel forecast">
+    <h2>SEMAI Forecast</h2>
+    <div class="replay-label">{{ replay_label }}</div>
+    <div class="row controls">
+      <input id="replay-date" type="date" min="2025-01-01" max="2025-12-31" value="2025-03-15">
+      <button id="play" class="btn">Play</button>
+      <span id="hour-readout" class="mono">hour —</span>
+    </div>
+    <div id="forecast-msg" class="muted small hidden">forecast model unavailable</div>
+    <canvas id="chart" width="560" height="300"></canvas>
+    <div class="today">
+      <div class="today-title">today's Penang outlook (weather forecast)</div>
+      <div id="today-meta" class="muted small">not fetched - run scripts/fetch_today.py while online</div>
+      <canvas id="today-strip" width="560" height="90"></canvas>
+    </div>
+  </section>
+
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

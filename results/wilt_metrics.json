@@ -1,0 +1,599 @@
+{
+  "part": "SEMAI Wilt Watch",
+  "trained_at_utc": "2026-09-25T04:40:00+00:00",
+  "seed": 0,
+  "dataset": {
+    "name": "Healthy and Wilted Houseplant Images (Kaggle, russellchan)",
+    "download_url": "https://www.kaggle.com/api/v1/datasets/download/russellchan/healthy-and-wilted-houseplant-images",
+    "page_url": "https://www.kaggle.com/datasets/russellchan/healthy-and-wilted-houseplant-images",
+    "n_images": 904,
+    "n_healthy": 452,
+    "n_wilted": 452,
+    "licence": "see the Kaggle dataset page",
+    "usage": "cite-only: no dataset image is copied into results/ (SPEC \u00a72 rule 7)",
+    "local_path": "data/wilt/houseplant_images"
+  },
+  "features": {
+    "extractor": "mobilenet_v3_large IMAGENET1K_V2 classifier=Identity 960-d",
+    "feature_dim": 960,
+    "extraction_seconds": 13.56,
+    "torch_num_threads": 4,
+    "batch_size": 32,
+    "weights_cache_file": "C:\\Users\\seana/.cache\\torch\\hub\\checkpoints\\mobilenet_v3_large-5c1a4163.pth",
+    "weights_url": "https://download.pytorch.org/models/mobilenet_v3_large-5c1a4163.pth",
+    "preprocess": "ImageClassification(\n    crop_size=[224]\n    resize_size=[232]\n    mean=[0.485, 0.456, 0.406]\n    std=[0.229, 0.224, 0.225]\n    interpolation=InterpolationMode.BILINEAR\n)",
+    "extracted_at_utc": "2026-09-25T04:14:44+00:00",
+    "cache_hit": true
+  },
+  "duplicates": {
+    "threshold": 0.97,
+    "n_pairs": 71,
+    "n_images_involved": 124,
+    "n_groups": 839,
+    "n_groups_2plus": 59,
+    "largest_group_size": 3,
+    "n_label_mismatch_pairs": 0,
+    "label_mismatch_pairs": [],
+    "pairs": [
+      {
+        "a": "healthy/healthy_002.jpg",
+        "b": "healthy/healthy_150.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_015.jpg",
+        "b": "healthy/healthy_146.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_030.jpg",
+        "b": "healthy/healthy_081.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_034.jpg",
+        "b": "healthy/healthy_182.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_042.jpg",
+        "b": "healthy/healthy_089.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_046.jpg",
+        "b": "healthy/healthy_254.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_050.jpg",
+        "b": "healthy/healthy_202.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_061.jpg",
+        "b": "healthy/healthy_335.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_072.jpg",
+        "b": "healthy/healthy_424.jpg",
+        "similarity": 0.9971
+      },
+      {
+        "a": "healthy/healthy_085.jpg",
+        "b": "healthy/healthy_442.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_090.jpg",
+        "b": "healthy/healthy_435.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_102.jpg",
+        "b": "healthy/healthy_329.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_109.jpg",
+        "b": "healthy/healthy_195.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_130.jpg",
+        "b": "healthy/healthy_357.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_136.jpg",
+        "b": "healthy/healthy_206.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_175.jpg",
+        "b": "healthy/healthy_400.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_176.jpg",
+        "b": "healthy/healthy_255.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_177.jpg",
+        "b": "healthy/healthy_439.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_187.jpg",
+        "b": "healthy/healthy_250.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_189.jpg",
+        "b": "healthy/healthy_252.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_189.jpg",
+        "b": "healthy/healthy_304.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_191.jpg",
+        "b": "healthy/healthy_300.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_205.jpg",
+        "b": "healthy/healthy_306.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_207.jpg",
+        "b": "healthy/healthy_285.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_246.jpg",
+        "b": "healthy/healthy_401.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_252.jpg",
+        "b": "healthy/healthy_304.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_349.jpg",
+        "b": "healthy/healthy_389.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_358.jpg",
+        "b": "healthy/healthy_377.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "healthy/healthy_361.jpg",
+        "b": "healthy/healthy_396.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_001.jpg",
+        "b": "wilted/wilted_310.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_001.jpg",
+        "b": "wilted/wilted_418.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_008.jpg",
+        "b": "wilted/wilted_327.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_008.jpg",
+        "b": "wilted/wilted_406.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_009.jpg",
+        "b": "wilted/wilted_038.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_009.jpg",
+        "b": "wilted/wilted_302.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_011.jpg",
+        "b": "wilted/wilted_404.jpg",
+        "similarity": 0.9999
+      },
+      {
+        "a": "wilted/wilted_013.jpg",
+        "b": "wilted/wilted_326.jpg",
+        "similarity": 0.9982
+      },
+      {
+        "a": "wilted/wilted_024.jpg",
+        "b": "wilted/wilted_221.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_032.jpg",
+        "b": "wilted/wilted_050.jpg",
+        "similarity": 0.9795
+      },
+      {
+        "a": "wilted/wilted_033.jpg",
+        "b": "wilted/wilted_281.jpg",
+        "similarity": 0.9933
+      },
+      {
+        "a": "wilted/wilted_036.jpg",
+        "b": "wilted/wilted_076.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_037.jpg",
+        "b": "wilted/wilted_072.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_038.jpg",
+        "b": "wilted/wilted_302.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_047.jpg",
+        "b": "wilted/wilted_308.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_047.jpg",
+        "b": "wilted/wilted_441.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_051.jpg",
+        "b": "wilted/wilted_444.jpg",
+        "similarity": 0.9981
+      },
+      {
+        "a": "wilted/wilted_054.jpg",
+        "b": "wilted/wilted_357.jpg",
+        "similarity": 0.9702
+      },
+      {
+        "a": "wilted/wilted_055.jpg",
+        "b": "wilted/wilted_184.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_063.jpg",
+        "b": "wilted/wilted_248.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_079.jpg",
+        "b": "wilted/wilted_135.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_085.jpg",
+        "b": "wilted/wilted_389.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_086.jpg",
+        "b": "wilted/wilted_285.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_107.jpg",
+        "b": "wilted/wilted_183.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_111.jpg",
+        "b": "wilted/wilted_352.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_118.jpg",
+        "b": "wilted/wilted_173.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_119.jpg",
+        "b": "wilted/wilted_172.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_143.jpg",
+        "b": "wilted/wilted_353.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_148.jpg",
+        "b": "wilted/wilted_421.jpg",
+        "similarity": 0.9999
+      },
+      {
+        "a": "wilted/wilted_159.jpg",
+        "b": "wilted/wilted_354.jpg",
+        "similarity": 0.9936
+      },
+      {
+        "a": "wilted/wilted_182.jpg",
+        "b": "wilted/wilted_222.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_201.jpg",
+        "b": "wilted/wilted_345.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_201.jpg",
+        "b": "wilted/wilted_380.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_220.jpg",
+        "b": "wilted/wilted_319.jpg",
+        "similarity": 0.9785
+      },
+      {
+        "a": "wilted/wilted_269.jpg",
+        "b": "wilted/wilted_270.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_304.jpg",
+        "b": "wilted/wilted_373.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_308.jpg",
+        "b": "wilted/wilted_441.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_310.jpg",
+        "b": "wilted/wilted_418.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_316.jpg",
+        "b": "wilted/wilted_390.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_327.jpg",
+        "b": "wilted/wilted_406.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_345.jpg",
+        "b": "wilted/wilted_380.jpg",
+        "similarity": 1.0
+      },
+      {
+        "a": "wilted/wilted_369.jpg",
+        "b": "wilted/wilted_414.jpg",
+        "similarity": 0.9999
+      }
+    ]
+  },
+  "model": {
+    "pipeline": "StandardScaler() -> LogisticRegression(C=0.1, max_iter=3000)",
+    "threshold": 0.5,
+    "unsure_band": [
+      0.35,
+      0.65
+    ],
+    "roi_default": 0.7,
+    "input_size": 224,
+    "path": "models/wilt.joblib",
+    "training_accuracy": "not reported: SPEC \u00a72 rule 2 forbids accuracy on training data"
+  },
+  "baseline": {
+    "name": "always one class (balanced 452/452)",
+    "accuracy": 0.5
+  },
+  "cv_grouped": {
+    "scheme": "StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=0), groups = near-duplicate group ids",
+    "headline": true,
+    "fold_accuracy": [
+      0.834254,
+      0.823204,
+      0.823204,
+      0.845304,
+      0.85
+    ],
+    "fold_test_sizes": [
+      181,
+      181,
+      181,
+      181,
+      180
+    ],
+    "mean_accuracy": 0.8351933701657458,
+    "std_accuracy": 0.01104364473664921,
+    "pooled_accuracy": 0.8351769911504425,
+    "precision": 0.8300653594771242,
+    "recall": 0.8429203539823009,
+    "f1": 0.8364434687156971,
+    "auc": 0.9121113634583757,
+    "confusion": {
+      "tn": 374,
+      "fp": 78,
+      "fn": 71,
+      "tp": 381
+    },
+    "positive_class": "wilted",
+    "baseline_accuracy": 0.5,
+    "n_duplicate_groups_split_across_train_test": 0
+  },
+  "cv_naive": {
+    "scheme": "StratifiedKFold(n_splits=5, shuffle=True, random_state=0)",
+    "headline": false,
+    "fold_accuracy": [
+      0.856354,
+      0.861878,
+      0.81768,
+      0.872928,
+      0.872222
+    ],
+    "fold_test_sizes": [
+      181,
+      181,
+      181,
+      181,
+      180
+    ],
+    "mean_accuracy": 0.8562124002455495,
+    "std_accuracy": 0.020261468876628934,
+    "pooled_accuracy": 0.8561946902654868,
+    "precision": 0.8626126126126126,
+    "recall": 0.8473451327433629,
+    "f1": 0.8549107142857143,
+    "auc": 0.9349400892787219,
+    "confusion": {
+      "tn": 391,
+      "fp": 61,
+      "fn": 69,
+      "tp": 383
+    },
+    "positive_class": "wilted",
+    "baseline_accuracy": 0.5,
+    "n_duplicate_groups_split_across_train_test": 92
+  },
+  "predict_timing_ms": {
+    "frame_size": "800x600 BGR synthetic (uniform noise, seed 0), roi 0.7",
+    "warmup_ms": 18.0,
+    "n_frames": 20,
+    "mean_ms": 7.107875000019703,
+    "median_ms": 7.001300000410993,
+    "max_ms": 9.211799999320647,
+    "min_ms": 6.415800000468153,
+    "target_ms": 300,
+    "meets_target": true,
+    "torch_num_threads_at_inference": 4,
+    "real_photo_timing_note": "6 dataset images (3 healthy, 3 wilted) loaded with cv2.imread; these are TRAINING images, so only the per-frame time is kept here (labels are printed to stdout and are not an accuracy measurement)",
+    "real_photo_timing_ms": [
+      {
+        "file": "healthy/healthy_000.jpg",
+        "ms": 13.5
+      },
+      {
+        "file": "healthy/healthy_001.jpg",
+        "ms": 6.5
+      },
+      {
+        "file": "healthy/healthy_002.jpg",
+        "ms": 6.2
+      },
+      {
+        "file": "wilted/wilted_000.jpg",
+        "ms": 7.2
+      },
+      {
+        "file": "wilted/wilted_001.jpg",
+        "ms": 7.9
+      },
+      {
+        "file": "wilted/wilted_002.jpg",
+        "ms": 7.3
+      }
+    ]
+  },
+  "rig_eval": "see results/wilt_rig_eval.json (scripts/eval_rig_frames.py)",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "extraction_seconds": 13.56,
+  "figures": [
+    "R1_wilt_cv_grouped_vs_naive.png",
+    "R2_wilt_confusion.png"
+  ],
+  "self_checks": [
+    {
+      "check": "dataset has 904 images (452/452)",
+      "passed": true,
+      "detail": "n=904 healthy=452 wilted=452"
+    },
+    {
+      "check": "feature matrix finite",
+      "passed": true,
+      "detail": "shape=(904, 960)"
+    },
+    {
+      "check": "feature dim 960",
+      "passed": true,
+      "detail": "dim=960"
+    },
+    {
+      "check": "MobileNet weights cached in torch hub",
+      "passed": true,
+      "detail": "C:\\Users\\seana/.cache\\torch\\hub\\checkpoints\\mobilenet_v3_large-5c1a4163.pth"
+    },
+    {
+      "check": "no label-mismatched duplicate pairs",
+      "passed": true,
+      "detail": "0 mismatches"
+    },
+    {
+      "check": "grouped CV: no duplicate group in both train and test of any fold",
+      "passed": true,
+      "detail": "5 folds checked"
+    },
+    {
+      "check": "grouped CV beats 50 % baseline",
+      "passed": true,
+      "detail": "0.8352"
+    },
+    {
+      "check": "models/wilt.joblib written",
+      "passed": true,
+      "detail": "28638 bytes"
+    },
+    {
+      "check": "semai.wilt.available() after training",
+      "passed": true,
+      "detail": "None"
+    },
+    {
+      "check": "predict < 300 ms per frame (max of 20)",
+      "passed": true,
+      "detail": "max 9.2 ms, mean 7.1 ms"
+    },
+    {
+      "check": "R1/R2 figures written",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "results/ holds no .jpg/.jpeg",
+      "passed": true,
+      "detail": "20 files scanned"
+    }
+  ],
+  "decisions": [
+    "see DECISIONS.md, Step 4 (recorded by the orchestrator from the builder report)"
+  ],
+  "fallbacks": [],
+  "total_script_seconds": 2.9
+}

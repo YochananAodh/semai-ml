@@ -1,0 +1,35 @@
+SEMAI soak test  2026-09-25 12:34:09
+duration 300 s, mock restart at 120 s
+mock http://127.0.0.1:8081   console http://127.0.0.1:8000
+
+mock up after 1.0322093963623047 s
+console up after 1.4234092235565186 s
+page/JS contains the em dash for nulls: True
+[ 120.1 s] killing the mock rig
+[ 124.1 s] mock rig restarted (up after 1.0426390171051025 s); waiting for the console to recover
+[ 125.1 s] console recovered 1.0 s after the mock restart
+[ 130.1 s] /stream reconnected 6.0 s after the mock restart (open=1)
+final mock stats: {"data_requests": 88, "frame_source": "webcam", "stream_connections_open": 1, "stream_connections_total": 1, "uptime_s": 176.85}
+
+--- numbers ---
+/api/state polls: 297, errors: 0
+polls with connected=true: 297
+null float fields seen in /api/state: 26 (mock emits ~1 in 20 readings with a null)
+float fields equal to exactly 0 (suspect null->0): 0
+mock /api/mock/stats samples: 60 (errors 0); max stream_connections_open: 1
+statuses seen: ['MOCK_ERR_SENSOR', 'MOCK_HIGH_VPD_MISTING', 'MOCK_LOW_VPD_PURGE', 'MOCK_OPTIMAL']
+recovered after restart: 1.0 s (limit 10 s)
+/stream back after restart: 6.0 s
+
+--- checks ---
+PASS  mock_started
+PASS  console_started
+PASS  page_has_em_dash_for_null
+PASS  page_has_MOCK_DATA_string
+PASS  console_recovers_within_10s
+PASS  api_state_never_errors
+PASS  nulls_kept_as_null_not_zero
+PASS  only_one_stream_connection
+PASS  mock_banner_flag_always_true
+
+OVERALL: PASS
