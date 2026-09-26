@@ -1,0 +1,6 @@
+,Accuracy,Precision,Recall,F1,ROC AUC
+"Always ""no""",0.76,0.0,0.0,0.0,
+"""Dry right now"" rule",0.899,0.839,0.717,0.773,
+Usual dry hours rule,0.839,0.635,0.772,0.697,0.905
+Logistic regression,0.942,0.881,0.879,0.88,0.984
+Gradient boosting,0.945,0.898,0.872,0.885,0.985
